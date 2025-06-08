@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 
-final _origin = 'http://localhost:8088';
+final _origin = 'http://192.168.1.11:8086';
 
 class StdPkg {
   final bool status;

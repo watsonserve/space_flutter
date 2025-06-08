@@ -3,7 +3,6 @@
 import 'package:flutter/material.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 import 'package:file_picker/file_picker.dart';
-import 'package:flutter/material.dart';
 
 import 'paged_wall.dart';
 import 'picture_item.dart';
@@ -107,9 +106,8 @@ class _MyHomePageState extends State<MyHomePage> {
       );
 
       if (result != null) {
-        setState(() {
-          _selectedFile = result.files.first;
-        });
+        var _selectedFiles = result.files;
+        print(_selectedFiles);
       }
     } catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(
@@ -134,15 +132,10 @@ class _MyHomePageState extends State<MyHomePage> {
         drawerEdgeDragWidth: 200,
         drawerScrimColor: Color(0xaa000000),
         drawer: Drawer(
-          child: [
-            Container(
-              decoration: BoxDecoration(color: Color(0xffff0000)),
-            ),
-            ElevatedButton(
-              onPressed: _pickFile,
-              child: Text('選擇文件'),
-            ),
-          ]
+          child: ElevatedButton(
+            onPressed: _pickFile,
+            child: Text('選擇文件'),
+          )
         ),
         body: PagedWall<String>(
           pagingController: pagingController,
